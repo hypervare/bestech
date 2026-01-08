@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bestech Plots</title>
+  <link rel="stylesheet" href="index.css"/>
+<!-- Bootstrap -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+
+<!-- <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">  -->
+
+</head>
+<body>
+
+  <!-- NAVBAR -->
+ <header class="navbar">
+  <div class="nav-left">
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="bi bi-person-bounding-box"></i>
+      </div>
+      <div>
+        <strong>Bestech Plots</strong>
+        <small>Sector 89A</small>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav-center" id="navMenu">
+    <a href="#">Features</a>
+    <a href="#">Amenities</a>
+    <a href="#">Pricing</a>
+    <a href="#">Location</a>
+  </nav>
+
+  <div class="nav-right">
+    <button class="btn-primary">Book Visit</button>
+
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SCRIPT (INSIDE FILE) ================= -->
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("navMenu");
+
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
+
+
+
+
+
+
+
+
+  function sendInquiry(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const budget = document.getElementById("budget").value.trim();
+  // const message = document.getElementById("message").value.trim();
+
+  const subject = encodeURIComponent("Inquiry for Bestech Plots");
+  const body = encodeURIComponent(
+`New Inquiry Details:
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Purpose: ${budget}
+
+`
+  );
+
+  window.location.href =
+    `mailto:hypervare@gmail.com?subject=${subject}&body=${body}`;
+}
+
+
+
+  function sendInquiry1(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name1").value.trim();
+  const phone = document.getElementById("phone1").value.trim();
+  const email = document.getElementById("email1").value.trim();
+  // const budget = document.getElementById("budget").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const subject = encodeURIComponent("Inquiry for Bestech Plots");
+  const body = encodeURIComponent(
+`New Inquiry Details:
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Message: ${message}
+
+`
+  );
+
+  window.location.href =
+    `mailto:hypervare@gmail.com?subject=${subject}&body=${body}`;
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <!-- LEFT -->
+      <div class="hero-left">
+        <span class="badge">✔ RERA Registered</span>
+
+        <h1>Premium<br/>Residential Plots</h1>
+
+        <p class="location">📍 Sector 89A, Dwarka Expressway</p>
+
+        <p class="desc">
+          Experience luxury living in a gated township with modern
+          amenities. Build your dream home with G+4 floors construction rights.
+        </p>
+
+        <div class="stats">
+          <div class="stat-card">
+            <strong>G+4</strong>
+            <span>Floors</span>
+          </div>
+          <div class="stat-card">
+            <strong>₹2.5Cr</strong>
+            <span>Starting</span>
+          </div>
+          <div class="stat-card">
+            <strong>₹70L</strong>
+            <span>Save Up To</span>
+          </div>
+        </div>
+
+        <div class="cta">
+          <button class="btn-primary">Schedule Site Visit</button>
+          <button class="btn-outline">Download Brochure</button>
+        </div>
+      </div>
+
+      <!-- RIGHT FORM -->
+    <div class="hero-form">
+  <h3>Get Exclusive Details</h3>
+  <p>Fill the form and our team will contact you</p>
+
+  <form onsubmit="sendInquiry(event)">
+    <input id="name" type="text" placeholder="Your Name" required />
+    <input id="phone" type="tel" placeholder="Phone Number" required />
+    <input id="email" type="email" placeholder="Email Address" required />
+    <input id="budget" type="text" placeholder="What's your budget..." />
+
+    <button type="submit" class="btn-primary">
+      Submit Inquiry
+    </button>
+  </form>
+</div>
+
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+<section class="features">
+  <div class="features-header">
+    <span class="pill">WHY CHOOSE US</span>
+    <h2>Exceptional Features</h2>
+    <p>Discover what makes Bestech Plots the perfect choice for your dream home</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card highlight">
+      <div class="icon"><i class="bi bi-shield-check"></i></div>
+      <h3>RERA Registered</h3>
+      <p>Fully approved and registered project ensuring complete transparency and legal compliance</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon"><i class="bi bi-building"></i></div>
+      <h3>G+4 Construction</h3>
+      <p>Build your dream home with ground plus four floors construction rights</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon"><i class="bi bi-house-lock"></i></div>
+      <h3>Gated Township</h3>
+      <p>Secure gated community with 24/7 security and modern infrastructure</p>
+    </div>
+
+    <div class="feature-card highlight">
+      <div class="icon"><i class="bi bi-geo-alt"></i></div>
+      <h3>Prime Location</h3>
+      <p>Located on Dwarka Expressway with excellent connectivity to Delhi and Gurgaon</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon"><i class="bi bi-tree"></i></div>
+      <h3>Green Spaces</h3>
+      <p>Beautifully landscaped gardens and parks for a healthy lifestyle</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon"><i class="bi bi-currency-rupee"></i></div>
+      <h3>Great Investment</h3>
+      <p>High appreciation potential with savings up to ₹70 Lakhs</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="investment">
+  <div class="investment-container">
+
+    <!-- LEFT -->
+    <div class="investment-left">
+
+      <!-- NEW TOP VIEW IMAGE -->
+      <div class="left-image-box">
+        <img src="YOUR_TOP_VIEW_IMAGE_URL" alt="Society Top View">
+      </div>
+
+      <span class="pill">INVESTMENT OPPORTUNITY</span>
+
+      <h1>
+        Smart Investment with <br>
+        High Returns
+      </h1>
+
+      <p>
+        Invest in premium residential plots at Sector 89A with exceptional
+        growth potential and significant savings.
+      </p>
+
+      <div class="points">
+        <div class="point">
+          <i class="bi bi-currency-rupee"></i>
+          <div>
+            <strong>Starting at ₹2.5 Crores</strong>
+            <span>Competitive pricing for premium plots</span>
+          </div>
+        </div>
+
+        <div class="point">
+          <i class="bi bi-piggy-bank"></i>
+          <div>
+            <strong>Save Up to ₹70 Lakhs</strong>
+            <span>Exclusive launch offers available</span>
+          </div>
+        </div>
+
+        <div class="point">
+          <i class="bi bi-graph-up-arrow"></i>
+          <div>
+            <strong>High Appreciation Potential</strong>
+            <span>Excellent long-term value growth</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="investment-right">
+      <div class="image-box">
+        <img src="assessts/image1.png" alt="Layout">
+      </div>
+
+      <div class="cta-box">
+        <small>Limited Plots Available</small>
+        <h3>Book Now</h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="amenities">
+  <div class="amenities-container">
+
+    <span class="pill">WORLD-CLASS FACILITIES</span>
+    <h2>Premium Amenities</h2>
+    <p class="subtitle">
+      Experience luxury living with state-of-the-art amenities designed for your comfort
+    </p>
+
+    <!-- ROW 1 -->
+    <div class="row">
+      <div class="amenity-card">
+        <i class="bi bi-shield-check"></i>
+        <h4>24/7 Security</h4>
+      </div>
+
+      <div class="amenity-card">
+        <i class="bi bi-camera-video"></i>
+        <h4>CCTV Surveillance</h4>
+      </div>
+
+      <div class="amenity-card">
+        <i class="bi bi-droplet"></i>
+        <h4>Water Supply</h4>
+      </div>
+
+      <div class="amenity-card">
+        <i class="bi bi-lightning-charge"></i>
+        <h4>Power Backup</h4>
+      </div>
+    </div>
+
+    <!-- ROW 2 (CENTERED CLUB HOUSE) -->
+    <div class="row">
+      <div class="spacer"></div>
+
+       <div class="amenity-card">
+  <i class="bi bi-tree"></i>
+  <h4>Landscaped Gardens</h4>
+</div>
+
+      <div class="amenity-card clubhouse">
+        <i class="bi bi-building"></i>
+        <h4>4 Acres Club House</h4>
+      </div>
+
+      <div class="amenity-card">
+  <i class="bi bi-people"></i>
+  <h4>Community Spaces</h4>
+</div>
+
+      <div class="spacer"></div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="row">
+      <div class="amenity-card">
+        <i class="bi bi-signpost-split"></i>
+        <h4>Wide Roads</h4>
+      </div>
+
+      <div class="amenity-card">
+        <i class="bi bi-dribbble"></i>
+        <h4>Sports Facilities</h4>
+      </div>
+
+      <div class="amenity-card">
+        <i class="bi bi-person-walking"></i>
+        <h4>Jogging Track</h4>
+      </div>
+
+      <div class="amenity-card">
+        <i class="bi bi-shop"></i>
+        <h4>Shopping Complex</h4>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="infra-section">
+  <div class="infra-box">
+
+    <!-- LEFT CONTENT -->
+    <div class="infra-left">
+      <h2>Modern Infrastructure for Modern Living</h2>
+
+      <p>
+        Our gated township features cutting-edge infrastructure and
+        amenities that cater to every aspect of contemporary lifestyle.
+        From security to recreation, we’ve thought of everything.
+      </p>
+
+      <ul class="infra-list">
+        <li>
+          <i class="bi bi-check-circle-fill"></i>
+          Underground electrical cabling
+        </li>
+        <li>
+          <i class="bi bi-check-circle-fill"></i>
+          Rainwater harvesting system
+        </li>
+        <li>
+          <i class="bi bi-check-circle-fill"></i>
+          Sewage treatment plant
+        </li>
+        <li>
+          <i class="bi bi-check-circle-fill"></i>
+          Smart home ready infrastructure
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="infra-right">
+      <img src="assessts/image2.png" alt="Modern Amenities">
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="pricing-section">
+
+  <div class="pricing-header">
+    <span class="pill">PRICING PLANS</span>
+    <h2>Choose Your Perfect Plot</h2>
+    <p>Flexible options to suit your requirements and budget</p>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- CARD 1 -->
+    <div class="price-card">
+      <h3>120 Sq. Yd.</h3>
+      <div class="price">₹2.5 Cr</div>
+      <span class="small">onwards*</span>
+
+      <ul>
+        <li><i class="bi bi-check-circle-fill"></i> G+4 Construction</li>
+        <li><i class="bi bi-check-circle-fill"></i> Corner Plot Available</li>
+        <li><i class="bi bi-check-circle-fill"></i> Park Facing Options</li>
+        <li><i class="bi bi-check-circle-fill"></i> Immediate Possession</li>
+      </ul>
+
+      <button class="btn-outline">Get Details</button>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="price-card popular">
+      <span class="popular-badge">Most Popular</span>
+
+      <h3>179 Sq. Yd.</h3>
+      <div class="price">₹3.1 Cr</div>
+      <span class="small">onwards*</span>
+
+      <ul>
+        <li><i class="bi bi-check-circle-fill"></i> G+4 Construction</li>
+        <li><i class="bi bi-check-circle-fill"></i> Premium Location</li>
+        <li><i class="bi bi-check-circle-fill"></i> Main Road Facing</li>
+        <li><i class="bi bi-check-circle-fill"></i> Flexible Payment Plan</li>
+      </ul>
+
+      <button class="btn-primary">Get Details</button>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="price-card">
+      <h3>120 Sq. Yd.</h3>
+      <div class="price">₹3.7 Cr</div>
+      <span class="small">onwards*</span>
+
+      <ul>
+        <li><i class="bi bi-check-circle-fill"></i> G+4 Construction</li>
+        <li><i class="bi bi-check-circle-fill"></i> Extra Wide Plot</li>
+        <li><i class="bi bi-check-circle-fill"></i> Corner & Park Facing</li>
+        <li><i class="bi bi-check-circle-fill"></i> Best Investment Value</li>
+      </ul>
+
+      <button class="btn-outline">Get Details</button>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<section class="launch-section">
+  <div class="launch-box">
+    <h2>Special Launch Offer</h2>
+    <p>Save up to <span>₹70 Lakhs</span> on early bookings</p>
+
+    <div class="launch-actions">
+      <button class="launch-primary">Book Now</button>
+      <button class="launch-outline">Payment Plans</button>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="master-section">
+
+  <!-- HEADER -->
+  <div class="master-header">
+    <span class="master-pill">MASTER PLAN</span>
+    <h2>Thoughtfully Designed Layout</h2>
+    <p>Explore our meticulously planned township with optimal space utilization</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="master-grid">
+
+    <!-- LEFT -->
+    <div class="master-features">
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-grid"></i></div>
+        <div class="feature-text">
+          <h4>Organized Layout</h4>
+          <p>Systematic plot arrangement with wide internal roads and proper drainage system</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-building"></i></div>
+        <div class="feature-text">
+          <h4>G+4 Construction Rights</h4>
+          <p>Build your dream home with ground plus four floors as per approved plans</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-tree"></i></div>
+        <div class="feature-text">
+          <h4>Green Spaces</h4>
+          <p>Abundant parks and landscaped areas for a healthy and peaceful environment</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-signpost-split"></i></div>
+        <div class="feature-text">
+          <h4>Wide Roads</h4>
+          <p>60 feet wide main roads and 40 feet internal roads for smooth connectivity</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="master-image-box">
+      <img src="assessts/image3.png" alt="Master Plan">
+      <button class="download-btn">
+        <i class="bi bi-download"></i> Download Plan
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="location-section">
+
+  <!-- HEADER -->
+  <div class="location-header">
+    <span class="location-pill">LOCATION ADVANTAGE</span>
+    <h2>Strategically Located</h2>
+    <p>Sector 89A, Dwarka Expressway – Connected to everything that matters</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="location-grid">
+
+    <!-- LEFT -->
+    <div class="location-left">
+      <h3>Excellent Connectivity</h3>
+
+      <div class="connectivity-list">
+
+        <div class="connectivity-card">
+          <div class="connect-left">
+            <div class="connect-icon"><i class="bi bi-geo-alt"></i></div>
+            <div class="connect-text">
+              <h4>IGI Airport</h4>
+              <span>25 km</span>
+            </div>
+          </div>
+          <div class="connect-time">
+            <strong>30 min</strong><br>
+            <span>drive</span>
+          </div>
+        </div>
+
+        <div class="connectivity-card">
+          <div class="connect-left">
+            <div class="connect-icon"><i class="bi bi-geo-alt"></i></div>
+            <div class="connect-text">
+              <h4>Cyber City</h4>
+              <span>15 km</span>
+            </div>
+          </div>
+          <div class="connect-time">
+            <strong>20 min</strong><br>
+            <span>drive</span>
+          </div>
+        </div>
+
+        <div class="connectivity-card">
+          <div class="connect-left">
+            <div class="connect-icon"><i class="bi bi-geo-alt"></i></div>
+            <div class="connect-text">
+              <h4>Diplomatic Enclave</h4>
+              <span>18 km</span>
+            </div>
+          </div>
+          <div class="connect-time">
+            <strong>25 min</strong><br>
+            <span>drive</span>
+          </div>
+        </div>
+
+        <div class="connectivity-card">
+          <div class="connect-left">
+            <div class="connect-icon"><i class="bi bi-geo-alt"></i></div>
+            <div class="connect-text">
+              <h4>NH-48</h4>
+              <span>5 km</span>
+            </div>
+          </div>
+          <div class="connect-time">
+            <strong>10 min</strong><br>
+            <span>drive</span>
+          </div>
+        </div>
+
+        <div class="connectivity-card">
+          <div class="connect-left">
+            <div class="connect-icon"><i class="bi bi-geo-alt"></i></div>
+            <div class="connect-text">
+              <h4>Dwarka</h4>
+              <span>12 km</span>
+            </div>
+          </div>
+          <div class="connect-time">
+            <strong>15 min</strong><br>
+            <span>drive</span>
+          </div>
+        </div>
+
+        <div class="connectivity-card">
+          <div class="connect-left">
+            <div class="connect-icon"><i class="bi bi-geo-alt"></i></div>
+            <div class="connect-text">
+              <h4>Gurgaon</h4>
+              <span>10 km</span>
+            </div>
+          </div>
+          <div class="connect-time">
+            <strong>15 min</strong><br>
+            <span>drive</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="location-right">
+
+      <div class="map-box">
+        <!-- <iframe 
+          src="https://www.google.com/maps?q=Sector%2089A%20Dwarka%20Expressway%20Gurgaon&output=embed">
+        </iframe> -->
+
+
+        <img src="assessts/annie-spratt-AFB6S2kibuk-unsplash.jpg" alt="">
+      </div>
+
+      <div class="address-card">
+        <h4>Address</h4>
+        <p>
+          Bestech Plots, Sector 89A, Dwarka Expressway,<br>
+          Gurgaon, Haryana
+        </p>
+        <button class="direction-btn">Get Directions</button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="landmark-section">
+  <div class="landmark-box">
+
+    <h3 class="landmark-title">Nearby Landmarks</h3>
+
+    <div class="landmark-grid">
+
+      <div class="landmark-item">
+        <div class="landmark-icon">
+          <i class="bi bi-hospital"></i>
+        </div>
+        <h4>Healthcare</h4>
+        <p>Multiple hospitals within 5 km radius</p>
+      </div>
+
+      <div class="landmark-item">
+        <div class="landmark-icon">
+          <i class="bi bi-mortarboard"></i>
+        </div>
+        <h4>Education</h4>
+        <p>Reputed schools and colleges nearby</p>
+      </div>
+
+      <div class="landmark-item">
+        <div class="landmark-icon">
+          <i class="bi bi-bag"></i>
+        </div>
+        <h4>Shopping</h4>
+        <p>Malls and markets in close proximity</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="about-section">
+  <div class="about-grid">
+
+    <!-- LEFT IMAGE -->
+    <div class="about-image-box">
+      <!-- Use a tall modern building image -->
+      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231" alt="Bestech Group">
+
+      <div class="about-stats">
+        <div>
+          <h3>25+</h3>
+          <span>Years</span>
+        </div>
+        <div>
+          <h3>50+</h3>
+          <span>Projects</span>
+        </div>
+        <div>
+          <h3>10K+</h3>
+          <span>Families</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="about-content">
+      <span class="about-pill">ABOUT DEVELOPER</span>
+
+      <h2>Trusted Name in Real Estate</h2>
+
+      <p>
+        Bestech Group is a renowned real estate developer with over 25 years of
+        experience in creating landmark residential and commercial projects
+        across North India.
+      </p>
+
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="about-icon"><i class="bi bi-award"></i></div>
+          <div>
+            <h4>Award-Winning Projects</h4>
+            <p>Multiple awards for excellence in construction and design</p>
+          </div>
+        </div>
+
+        <div class="about-feature">
+          <div class="about-icon"><i class="bi bi-clock"></i></div>
+          <div>
+            <h4>Timely Delivery</h4>
+            <p>Proven track record of delivering projects on schedule</p>
+          </div>
+        </div>
+
+        <div class="about-feature">
+          <div class="about-icon"><i class="bi bi-shield-check"></i></div>
+          <div>
+            <h4>Quality Assurance</h4>
+            <p>Commitment to highest standards of construction quality</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-quote">
+        <p>
+          “We believe in creating spaces that enhance the quality of life for our
+          customers. Every project is built with dedication, transparency, and a
+          commitment to excellence.”
+        </p>
+        <div class="quote-author">
+          <i class="bi bi-person-circle"></i>
+          Bestech Group <span>Leadership Team</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="contact-section">
+
+  <div class="contact-header">
+    <span class="contact-pill">GET IN TOUCH</span>
+    <h2>Contact Us Today</h2>
+    <p>Have questions? Our team is here to help you find your perfect plot</p>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- LEFT INFO -->
+    <div class="contact-info">
+
+      <div class="info-card">
+        <div class="info-icon"><i class="bi bi-telephone"></i></div>
+        <div>
+          <h4>Phone</h4>
+          <p>Call us for immediate assistance</p>
+          <div class="info-highlight">+91 98765 43210</div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="bi bi-envelope"></i></div>
+        <div>
+          <h4>Email</h4>
+          <p>Send us your queries</p>
+          <div class="info-highlight">info@bestechplots.com</div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="bi bi-geo-alt"></i></div>
+        <div>
+          <h4>Office Address</h4>
+          <p>Sector 89A, Dwarka Expressway<br>Gurgaon, Haryana, India</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="bi bi-clock"></i></div>
+        <div>
+          <h4>Office Hours</h4>
+          <p>
+            Monday – Saturday: 9:00 AM – 7:00 PM<br>
+            Sunday: 10:00 AM – 5:00 PM
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+<!-- 
+
+  <input id="name" type="text" placeholder="Your Name" required />
+    <input id="phone" type="tel" placeholder="Phone Number" required />
+    <input id="email" type="email" placeholder="Email Address" required />
+    <input id="budget" type="text" placeholder="What's your budget..." /> -->
+
+
+
+
+
+
+
+    <!-- RIGHT FORM -->
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+
+
+      <form onsubmit="sendInquiry1(event)">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input id="name1" type="text" placeholder="Your Name" required />
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+       <input id="email1" type="email" placeholder="Email Address" required />
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input id="phone1" type="tel" placeholder="Phone Number" required />
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <input id="message" type="text" placeholder="Hello..." />
+        <div class="char-limit">Maximum 500 characters</div>
+      </div>
+
+      <button class="send-btn">Send Message</button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+  <div class="footer-grid">
+
+    <!-- BRAND -->
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-icon"><i class="bi bi-building"></i></div>
+        <div>
+          <h3>Bestech Plots</h3>
+          <span>Sector 89A</span>
+        </div>
+      </div>
+
+      <p class="footer-desc">
+        Premium residential plots in a gated township with world-class
+        amenities on Dwarka Expressway.
+      </p>
+
+      <div class="footer-social">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-twitter"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div>
+      <h4>Quick Links</h4>
+      <div class="footer-links">
+        <a href="#">Features</a>
+        <a href="#">Amenities</a>
+        <a href="#">Pricing</a>
+        <a href="#">Location</a>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div>
+      <h4>Contact Info</h4>
+      <div class="footer-contact">
+        <div class="contact-item">
+          <i class="bi bi-telephone"></i>
+          +91 98765 43210
+        </div>
+        <div class="contact-item">
+          <i class="bi bi-envelope"></i>
+          info@bestechplots.com
+        </div>
+        <div class="contact-item">
+          <i class="bi bi-geo-alt"></i>
+          Sector 89A, Dwarka Expressway
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter">
+      <h4>Newsletter</h4>
+      <p>Subscribe to get latest updates and offers</p>
+      <input type="email" placeholder="Your email">
+      <button>Subscribe</button>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <div>© 2024 Bestech Plots. All rights reserved.</div>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Powered by Readdy</a>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    *Prices and offers are subject to change without prior notice.
+    All images are for representational purposes only.
+    Please contact our sales team for current pricing and availability.
+  </div>
+
+</footer>
+
+
+
+</body>
+</html>
