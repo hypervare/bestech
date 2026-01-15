@@ -394,6 +394,7 @@ width: 30%;
   }
 
   .hero-form {
+    display: none;
     padding: 28px 22px;
   }
 }
