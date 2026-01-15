@@ -2374,4 +2374,125 @@ img {
 .m7w29c {
 
   opacity: 0;
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+section.mobile-bottom-section{
+    display:none;
+}
+
+/* ================= MOBILE ONLY ================= */
+@media (max-width:768px){
+
+    body{
+        padding-bottom:90px;
+    }
+
+    /* ===== STICKY BOTTOM BAR ===== */
+    section.mobile-bottom-section{
+        display:flex;
+        position:fixed;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:78px;
+
+        background:
+            radial-gradient(
+                circle at 50% -40%,
+                rgba(245,196,0,0.28),
+                rgba(0,0,0,0) 65%
+            ),
+            linear-gradient(
+                180deg,
+                #0c0c0c 0%,
+                #050505 60%,
+                #000000 100%
+            );
+
+        box-shadow:
+            0 -12px 40px rgba(0,0,0,0.9),
+            inset 0 1px 0 rgba(255,255,255,0.05);
+
+        border-top:1px solid rgba(245,196,0,0.18);
+        z-index:9999;
+    }
+
+    /* ===== CTA ITEMS ===== */
+    .cta-item{
+        flex:1;
+        text-decoration:none;
+        color:#ffffff;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:6px;
+        font-size:12px;
+        font-weight:600;
+        position:relative;
+    }
+
+    /* Divider */
+    .cta-item:not(:last-child)::after{
+        content:"";
+        position:absolute;
+        right:0;
+        top:20%;
+        height:60%;
+        width:1px;
+        background:linear-gradient(
+            to bottom,
+            transparent,
+            rgba(245,196,0,0.35),
+            transparent
+        );
+    }
+
+    /* ===== ICON STYLE (REFINED SIZE) ===== */
+    .cta-item i{
+        font-size:16px;      /* smaller icon */
+        padding:7px;        /* smaller gold circle */
+        border-radius:50%;
+
+        background:linear-gradient(
+            135deg,
+            #ffd86a,
+            #f5c400
+        );
+
+        color:#5c4300;
+
+        box-shadow:
+            0 0 0 1px rgba(245,196,0,0.55),
+            0 4px 12px rgba(245,196,0,0.3);
+    }
+
+    .cta-item:active{
+        background:rgba(245,196,0,0.08);
+    }
+}
+
+
+
+
+
+
+
+
+
