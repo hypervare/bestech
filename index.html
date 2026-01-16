@@ -85,7 +85,7 @@ Purpose: ${budget}
   );
 
   window.location.href =
-    `mailto:tusharkashyap06@gmail.com?subject=${subject}&body=${body}`;
+    `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
 }
 
 
@@ -112,7 +112,7 @@ Message: ${message}
   );
 
   window.location.href =
-    `mailto:tusharkashyap06@gmail.com?subject=${subject}&body=${body}`;
+    `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
 }
 
 
@@ -1232,10 +1232,12 @@ Message: ${message}
     <p>Fill the form and our team will contact you</p>
 
     <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Email Address" required>
-      <input type="tel" placeholder="Phone Number" required>
-      <button class="submit-btn">Submit</button>
+      <form id="popupForm">
+  <input id="pname" type="text" placeholder="Your Name" required>
+  <input id="pemail" type="email" placeholder="Email Address" required>
+  <input id="pphone" type="tel" placeholder="Phone Number" required>
+  <button type="submit" class="submit-btn">Submit</button>
+</form>
     </form>
   </div>
 </div>
@@ -1259,8 +1261,39 @@ closeBtn.addEventListener("click", () => {
 
 
 
+
+
+
+
+
+
+
+  <script>
+document.getElementById("popupForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("pname").value.trim();
+  const email = document.getElementById("pemail").value.trim();
+  const phone = document.getElementById("pphone").value.trim();
+
+  const subject = encodeURIComponent("New Inquiry - Luxury Plots");
+  const body = encodeURIComponent(
+    `New Inquiry Received:\n\n` +
+    `Name: ${name}\n` +
+    `Email: ${email}\n` +
+    `Phone: ${phone}\n`
+  );
+
+  window.location.href =
+    `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
+});
+</script>
+
+
+
 </body>
 </html>
+
 
 
 
