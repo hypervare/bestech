@@ -1181,7 +1181,7 @@ Message: ${message}
         </div>
         <div class="contact-item">
           <i class="bi bi-envelope"></i>
-          tusharkashyap06@gmail.com
+          Atavantika18@gmail.com
         </div>
         <div class="contact-item">
           <i class="bi bi-geo-alt"></i>
@@ -1194,7 +1194,7 @@ Message: ${message}
     <div class="newsletter">
       <h4>WhatsApp</h4>
       <p>Subscribe to get latest updates and offers.</p>
-      <a href="https://api.whatsapp.com/send/?phone=918755334299&text=Hey,%0aI%20want%20to%20know%20more%20about%20Bestech.&type=phone_number&app_absent=0"><button>Connect on WhatsApp</button></a>
+      <a href="https://api.whatsapp.com/send/?phone=918755334299&text=Hey,%0aI%20want%20to%20know%20more%20about%20plots&type=phone_number&app_absent=0"><button>Connect on WhatsApp</button></a>
     </div>
 
   </div>
@@ -1219,8 +1219,49 @@ Message: ${message}
 
 
 
+
+
+
+
+
+  <div class="popup-overlay" id="popup">
+  <div class="popup-card">
+    <button class="close-btn" id="closeBtn">&times;</button>
+
+    <h2>Get Exclusive Details</h2>
+    <p>Fill the form and our team will contact you</p>
+
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <button class="submit-btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+const popup = document.getElementById("popup");
+const closeBtn = document.getElementById("closeBtn");
+
+/* Show popup after 10 seconds */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    popup.style.display = "flex";
+  }, 10000); // 10 seconds
+});
+
+/* Close popup */
+closeBtn.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+</script>
+
+
+
 </body>
 </html>
+
 
 
 
