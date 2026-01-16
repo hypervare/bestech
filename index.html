@@ -1246,10 +1246,8 @@ Message: ${message}
 const popup = document.getElementById("popup");
 const closeBtn = document.getElementById("closeBtn");
 
-// 🔒 key to remember popup state
-const POPUP_KEY = "luxuryPlotsPopupShown";
+const POPUP_KEY = "luxuryPlotsPopupShown_v1"; // 👈 versioned key
 
-// Show popup after 10s ONLY IF not shown before
 window.addEventListener("load", () => {
   if (!localStorage.getItem(POPUP_KEY)) {
     setTimeout(() => {
@@ -1258,10 +1256,14 @@ window.addEventListener("load", () => {
   }
 });
 
-// Close popup (X button)
 closeBtn.addEventListener("click", () => {
   popup.style.display = "none";
   localStorage.setItem(POPUP_KEY, "true");
+});
+
+document.getElementById("popupForm").addEventListener("submit", function () {
+  localStorage.setItem(POPUP_KEY, "true");
+  popup.style.display = "none";
 });
 </script>
 
@@ -1299,6 +1301,7 @@ document.getElementById("popupForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
