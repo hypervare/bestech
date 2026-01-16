@@ -1246,16 +1246,22 @@ Message: ${message}
 const popup = document.getElementById("popup");
 const closeBtn = document.getElementById("closeBtn");
 
-/* Show popup after 10 seconds */
+// 🔒 key to remember popup state
+const POPUP_KEY = "luxuryPlotsPopupShown";
+
+// Show popup after 10s ONLY IF not shown before
 window.addEventListener("load", () => {
-  setTimeout(() => {
-    popup.style.display = "flex";
-  }, 10000); // 10 seconds
+  if (!localStorage.getItem(POPUP_KEY)) {
+    setTimeout(() => {
+      popup.style.display = "flex";
+    }, 10000);
+  }
 });
 
-/* Close popup */
+// Close popup (X button)
 closeBtn.addEventListener("click", () => {
   popup.style.display = "none";
+  localStorage.setItem(POPUP_KEY, "true");
 });
 </script>
 
@@ -1293,6 +1299,7 @@ document.getElementById("popupForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
