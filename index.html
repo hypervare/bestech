@@ -1249,6 +1249,20 @@ Message: ${message}
 
 
 
+  <div class="thankyou-overlay" id="thankYouPopup" style="display:none;">
+  <div class="thankyou-box">
+    <h2>Thank You! 🎉</h2>
+    <p>Your enquiry has been submitted successfully.</p>
+    <button id="thankYouClose">Close</button>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 
 
@@ -1330,61 +1344,58 @@ document.getElementById("popupForm").addEventListener("submit", function(e) {
 
 
 
-  <script>
-console.log("✅ JS file loaded");
-
-window.addEventListener("load", () => {
-  console.log("✅ Window loaded");
-
+ <script>
+document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("popup");
-  const form = document.getElementById("popupForm");
+  const popupForm = document.getElementById("popupForm");
+  const popupClose = document.getElementById("closeBtn");
 
-  console.log("Popup element:", popup);
-  console.log("Form element:", form);
+  const thankYouPopup = document.getElementById("thankYouPopup");
+  const thankYouClose = document.getElementById("thankYouClose");
 
-  
+  // 🔔 Show main popup after 2 sec
   setTimeout(() => {
-    if (popup) {
-      popup.style.display = "flex";
-      console.log("✅ Popup forced open");
-    } else {
-      console.error("❌ Popup NOT found");
-    }
+    popup.style.display = "flex";
   }, 2000);
 
-  
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      console.log("✅ FORM SUBMITTED");
+  // ❌ Close main popup manually
+  popupClose.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
 
-    //   alert("FORM SUBMIT EVENT WORKING");
-    });
-  } else {
-    console.error("❌ popupForm NOT found");
-  }
-});
-</script>
+  // 📩 FORM SUBMIT (SUCCESS FLOW)
+  popupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
+    const name = document.getElementById("pname").value.trim();
+    const email = document.getElementById("pemail").value.trim();
+    const phone = document.getElementById("pphone").value.trim();
 
-<script>
-document.getElementById("popupForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+    // ✅ basic validation = successful submission
+    if (!name || !email || !phone) return;
 
-  const name = document.getElementById("pname").value.trim();
-  const email = document.getElementById("pemail").value.trim();
-  const phone = document.getElementById("pphone").value.trim();
+    const subject = encodeURIComponent("New Inquiry - Luxury Plots");
+    const body = encodeURIComponent(
+      `New Inquiry Received:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`
+    );
 
-  const subject = encodeURIComponent("New Inquiry - Luxury Plots");
-  const body = encodeURIComponent(
-    `New Inquiry Received:\n\n` +
-    `Name: ${name}\n` +
-    `Email: ${email}\n` +
-    `Phone: ${phone}\n`
-  );
+    // 📧 Trigger email
+    window.location.href =
+      `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
 
-  window.location.href =
-    `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
+    // ✅ Close main popup
+    popup.style.display = "none";
+
+    // ✅ Show thank you popup AFTER submission
+    setTimeout(() => {
+      thankYouPopup.style.display = "flex";
+    }, 600);
+  });
+
+  // ❌ Close thank you popup
+  thankYouClose.addEventListener("click", () => {
+    thankYouPopup.style.display = "none";
+  });
 });
 </script>
 
@@ -1394,6 +1405,7 @@ document.getElementById("popupForm").addEventListener("submit", function (e) {
 
 </body>
 </html>
+
 
 
 
