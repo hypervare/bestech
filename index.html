@@ -1489,26 +1489,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const popup = document.getElementById("popup");
-  const openButtons = document.querySelectorAll(".open-popup");
-  const closeBtn = document.getElementById("closeBtn");
+  /* ===== AMENITIES SLIDER (BULLETPROOF) ===== */
+const track = document.querySelector(".slider-track");
+const cards = document.querySelectorAll(".slider-track .amenity-card");
+const nextBtn = document.querySelector(".slider-btn.next");
+const prevBtn = document.querySelector(".slider-btn.prev");
 
-  openButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      popup.style.display = "flex";
-      document.body.style.overflow = "hidden"; // prevent background scroll
-    });
-  });
+if (track && cards.length && nextBtn && prevBtn) {
+  let index = 0;
 
-  closeBtn.addEventListener("click", () => {
-    popup.style.display = "none";
-    document.body.style.overflow = "";
-  });
-});
+  function slide() {
+    const cardWidth = cards[0].offsetWidth;
+    track.scrollLeft = cardWidth * index;
+  }
+
+  nextBtn.onclick = () => {
+    if (index < cards.length - 1) {
+      index++;
+      slide();
+    }
+  };
+
+  prevBtn.onclick = () => {
+    if (index > 0) {
+      index--;
+      slide();
+    }
+  };
+}
+
 </script>
+
+
 
 
 
@@ -1527,7 +1540,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
 
 
 
