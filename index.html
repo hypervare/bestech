@@ -37,7 +37,7 @@
   </nav>
 
   <div class="nav-right">
-    <a href="#contact"><button class="btn-primary">Book Visit</button></a>
+    <a href="#contact"><button class="btn-primary open-popup">Book Visit</button></a>
 
     <div class="menu-toggle" id="menuToggle">
       <span></span>
@@ -174,7 +174,7 @@ Message: ${message}
 
         <div class="cta">
           <a href="https://api.whatsapp.com/send/?phone=918755334299&text=Hi%2C%20I%E2%80%99m%20interested%20in%20luxury%20plots%20in%20Gurgaon.%20Please%20share%20details.%20Thanks&type=phone_number&app_absent=0"><button class="btn-primary">Connect on WhatsApp</button></a>
-          <a href="#enquiryForm"><button class="btn-outline">Download Brochure</button></a>
+          <a href="#enquiryForm"><button class="btn-outline open-popup">Download Brochure</button></a>
         </div>
       </div>
 
@@ -324,7 +324,7 @@ Message: ${message}
 
       <div class="cta-box">
         <small>Limited Plots Available</small>
-        <a href="#enquiryForm" style="text-decoration: none; color: black;"><h3>Book Now</h3></a>
+        <a href="#enquiryForm" class="open-popup" style="text-decoration: none; color: black;"><h3>Book Now</h3></a>
       </div>
     </div>
 
@@ -366,77 +366,68 @@ Message: ${message}
       Experience luxury living with state-of-the-art amenities designed for your comfort
     </p>
 
-    <!-- ROW 1 -->
-    <div class="row">
-      <div class="amenity-card">
-        <i class="bi bi-shield-check"></i>
-        <h4>24/7 Security</h4>
-      </div>
+    <div class="amenities-slider">
+      <button class="slider-btn prev">‹</button>
+      <button class="slider-btn next">›</button>
 
-      <div class="amenity-card">
-        <i class="bi bi-camera-video"></i>
-        <h4>CCTV Surveillance</h4>
-      </div>
+      <div class="slider-track">
 
-      <div class="amenity-card">
-        <i class="bi bi-droplet"></i>
-        <h4>Water Supply</h4>
-      </div>
+        <!-- ROW 1 -->
+        <div class="row">
+          <div class="amenity-card"><i class="bi bi-shield-check"></i><h4>24/7 Security</h4></div>
+          <div class="amenity-card"><i class="bi bi-camera-video"></i><h4>CCTV Surveillance</h4></div>
+          <div class="amenity-card"><i class="bi bi-droplet"></i><h4>Water Supply</h4></div>
+          <div class="amenity-card"><i class="bi bi-lightning-charge"></i><h4>Power Backup</h4></div>
+        </div>
 
-      <div class="amenity-card">
-        <i class="bi bi-lightning-charge"></i>
-        <h4>Power Backup</h4>
-      </div>
-    </div>
+        <!-- ROW 2 (CENTERED DESKTOP ONLY) -->
+        <div class="row row-centered">
+          <div class="spacer"></div>
+          <div class="amenity-card"><i class="bi bi-tree"></i><h4>Landscaped Gardens</h4></div>
+          <div class="amenity-card clubhouse"><i class="bi bi-building"></i><h4>4 Acres Club House</h4></div>
+          <div class="amenity-card"><i class="bi bi-people"></i><h4>Community Spaces</h4></div>
+          <div class="spacer"></div>
+        </div>
 
-    <!-- ROW 2 (CENTERED CLUB HOUSE) -->
-    <div class="row">
-      <div class="spacer"></div>
+        <!-- ROW 3 -->
+        <div class="row">
+          <div class="amenity-card"><i class="bi bi-signpost-split"></i><h4>Wide Roads</h4></div>
+          <div class="amenity-card"><i class="bi bi-dribbble"></i><h4>Sports Facilities</h4></div>
+          <div class="amenity-card"><i class="bi bi-person-walking"></i><h4>Jogging Track</h4></div>
+          <div class="amenity-card"><i class="bi bi-shop"></i><h4>Shopping Complex</h4></div>
+        </div>
 
-       <div class="amenity-card">
-  <i class="bi bi-tree"></i>
-  <h4>Landscaped Gardens</h4>
-</div>
-
-      <div class="amenity-card clubhouse">
-        <i class="bi bi-building"></i>
-        <h4>4 Acres Club House</h4>
-      </div>
-
-      <div class="amenity-card">
-  <i class="bi bi-people"></i>
-  <h4>Community Spaces</h4>
-</div>
-
-      <div class="spacer"></div>
-    </div>
-
-    <!-- ROW 3 -->
-    <div class="row">
-      <div class="amenity-card">
-        <i class="bi bi-signpost-split"></i>
-        <h4>Wide Roads</h4>
-      </div>
-
-      <div class="amenity-card">
-        <i class="bi bi-dribbble"></i>
-        <h4>Sports Facilities</h4>
-      </div>
-
-      <div class="amenity-card">
-        <i class="bi bi-person-walking"></i>
-        <h4>Jogging Track</h4>
-      </div>
-
-      <div class="amenity-card">
-        <i class="bi bi-shop"></i>
-        <h4>Shopping Complex</h4>
       </div>
     </div>
 
   </div>
 </section>
 
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 600px)').matches) return;
+
+  const track = document.querySelector('.slider-track');
+  const cards = track.querySelectorAll('.amenity-card');
+  const next = document.querySelector('.slider-btn.next');
+  const prev = document.querySelector('.slider-btn.prev');
+
+  let index = 0;
+
+  function slideTo(i) {
+    const width = cards[0].offsetWidth + 16;
+    track.scrollTo({ left: width * i, behavior: 'smooth' });
+  }
+
+  next.onclick = () => {
+    if (index < cards.length - 1) slideTo(++index);
+  };
+
+  prev.onclick = () => {
+    if (index > 0) slideTo(--index);
+  };
+})();
+</script>
 
 
 
@@ -533,7 +524,7 @@ Message: ${message}
         <li><i class="bi bi-check-circle-fill"></i> Immediate Possession</li>
       </ul>
 
-      <a href="#enquiryForm"><button class="btn-outline">Get Details</button></a>
+      <a href="#enquiryForm"><button class="btn-outline open-popup">Get Details</button></a>
     </div>
 
     <!-- CARD 2 -->
@@ -552,7 +543,7 @@ Message: ${message}
         <li><i class="bi bi-check-circle-fill"></i> Best Investment Value</li>
       </ul>
 
-      <a href="#enquiryForm"><button class="btn-primary">Get Details</button></a>
+      <a href="#"><button class="btn-primary open-popup">Get Details</button></a>
     </div>
 
     <!-- CARD 3 -->
@@ -568,7 +559,7 @@ Message: ${message}
         <li><i class="bi bi-check-circle-fill"></i> Flexible Payment Plan</li>
       </ul>
 
-      <a href="#enquiryForm"><button class="btn-outline">Get Details</button></a>
+      <a href="#"><button class="btn-outline">Get Details</button></a>
     </div>
 
   </div>
@@ -587,7 +578,7 @@ Message: ${message}
     <p>Save up to <span>₹50 Lakhs</span> on early bookings</p>
 
     <div class="launch-actions">
-      <a href="#enquiryForm"><button class="launch-primary">Book Now</button></a>
+      <a href="#"><button class="launch-primary open-popup">Book Now</button></a>
       <!-- <button class="launch-outline">Payment Plans</button> -->
     </div>
   </div>
@@ -812,7 +803,7 @@ Message: ${message}
           Luxury Plots, Sector 89A, Dwarka Expressway,<br>
           Gurgaon, Haryana
         </p>
-        <a href="https://api.whatsapp.com/send/?phone=918755334299&text=Hey,%0aI%20want%20to%20know%20direction%20to%20Bestech.&type=phone_number&app_absent=0"></a><button class="direction-btn">Get Directions</button>
+        <a href="https://api.whatsapp.com/send/?phone=918755334299&text=Hey,%0aI%20want%20to%20know%20direction%20to%20Bestech.&type=phone_number&app_absent=0"></a><button class="direction-btn open-popup">Get Directions</button>
       </div>
 
     </div>
@@ -1203,16 +1194,15 @@ Message: ${message}
   <div class="footer-bottom">
     <div><p>© 2024 Luxury Plots | Designed by <a href="https://hypervare.com" style="color: white; text-decoration: none; margin: 0; padding: 0;">Hyper Vare</a>.</p></div>
     <div>
-      <a href="https://bestechplots89.com/disclaimer.html">Privacy Policy</a>
-      <a href="https://bestechplots89.com/disclaimer.html">Terms & Conditions</a>
-      
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Powered by Readdy</a>
     </div>
   </div>
 
   <div class="footer-note">
-    *Prices and offers are subject to change without prior notice.
-    All images are for representational purposes only.
-    Please contact our sales team for current pricing and availability.
+    RERA Numbers: GGM/739/471/2023/83 and GGM/730/462/2023/74
+
   </div>
 
 </footer>
@@ -1237,8 +1227,8 @@ Message: ${message}
   <input id="pemail" type="email" placeholder="Email Address" required>
   <input id="pphone" type="tel" placeholder="Phone Number" required>
   <button type="submit" class="submit-btn">Submit</button>
-
-    </form>
+</form>
+    
   </div>
 </div>
 
@@ -1249,10 +1239,11 @@ Message: ${message}
 
 
 
-  <div class="thankyou-overlay" id="thankYouPopup" style="display:none;">
+
+<div class="thankyou-overlay" id="thankYouPopup" style="display:none;">
   <div class="thankyou-box">
     <h2>Thank You! 🎉</h2>
-    <p>Thanks for reaching us out.</p>
+    <p>Your enquiry has been submitted successfully.</p>
     <button id="thankYouClose">Close</button>
   </div>
 </div>
@@ -1267,44 +1258,52 @@ Message: ${message}
 
 
 
-  
+
+
+
+
+
+
 
 <!-- <script>
-const popup = document.getElementById("popup");
-const closeBtn = document.getElementById("closeBtn");
-
-const POPUP_KEY = "luxuryPlotsPopupShown_v1"; // 👈 versioned key
+console.log("✅ JS file loaded");
 
 window.addEventListener("load", () => {
-  if (!localStorage.getItem(POPUP_KEY)) {
-    setTimeout(() => {
+  console.log("✅ Window loaded");
+
+  const popup = document.getElementById("popup");
+  const form = document.getElementById("popupForm");
+
+  console.log("Popup element:", popup);
+  console.log("Form element:", form);
+
+  
+  setTimeout(() => {
+    if (popup) {
       popup.style.display = "flex";
-    }, 10000);
+      console.log("✅ Popup forced open");
+    } else {
+      console.error("❌ Popup NOT found");
+    }
+  }, 2000);
+
+  
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      console.log("✅ FORM SUBMITTED");
+
+    //   alert("FORM SUBMIT EVENT WORKING");
+    });
+  } else {
+    console.error("❌ popupForm NOT found");
   }
-});
-
-closeBtn.addEventListener("click", () => {
-  popup.style.display = "none";
-  localStorage.setItem(POPUP_KEY, "true");
-});
-
-document.getElementById("popupForm").addEventListener("submit", function () {
-  localStorage.setItem(POPUP_KEY, "true");
-  popup.style.display = "none";
 });
 </script>
 
 
-
-
-
-
-
-
-
-
-  <script>
-document.getElementById("popupForm").addEventListener("submit", function(e) {
+<script>
+document.getElementById("popupForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const name = document.getElementById("pname").value.trim();
@@ -1321,6 +1320,22 @@ document.getElementById("popupForm").addEventListener("submit", function(e) {
 
   window.location.href =
     `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
+});
+</script>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("popup");
+  const closeBtn = document.getElementById("closeBtn");
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+  }
 });
 </script> -->
 
@@ -1344,7 +1359,67 @@ document.getElementById("popupForm").addEventListener("submit", function(e) {
 
 
 
- <script>
+
+
+
+
+<!-- <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("popup");
+  const popupForm = document.getElementById("popupForm");
+  const popupClose = document.getElementById("closeBtn");
+
+  const thankYouPopup = document.getElementById("thankYouPopup");
+  const thankYouClose = document.getElementById("thankYouClose");
+
+  // 🔔 Show popup after 2 seconds
+  setTimeout(() => {
+    popup.style.display = "flex";
+  }, 2000);
+
+  // ❌ Close main popup
+  popupClose.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
+
+  // 📩 Form submit
+  popupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("pname").value.trim();
+    const email = document.getElementById("pemail").value.trim();
+    const phone = document.getElementById("pphone").value.trim();
+
+    const subject = encodeURIComponent("New Inquiry - Luxury Plots");
+    const body = encodeURIComponent(
+      `New Inquiry Received:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`
+    );
+
+    // ✅ Close main popup
+    popup.style.display = "none";
+
+    // ✅ Show thank you popup
+    thankYouPopup.style.display = "flex";
+
+    // 📧 Trigger email
+    window.location.href =
+      `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
+  });
+
+  // ❌ Close thank you popup
+  thankYouClose.addEventListener("click", () => {
+    thankYouPopup.style.display = "none";
+  });
+});
+</script> -->
+
+
+
+
+
+
+
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("popup");
   const popupForm = document.getElementById("popupForm");
@@ -1399,18 +1474,59 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("popup");
+  const openButtons = document.querySelectorAll(".open-popup");
+  const closeBtn = document.getElementById("closeBtn");
+
+  openButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      popup.style.display = "flex";
+      document.body.style.overflow = "hidden"; // prevent background scroll
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+    document.body.style.overflow = "";
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 </body>
 </html>
-
-
-
-
-
-
 
 
 
