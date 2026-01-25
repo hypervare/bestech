@@ -49,28 +49,26 @@
 
 <!-- ================= SCRIPT (INSIDE FILE) ================= -->
 <script>
+/* ================= DOM-DEPENDENT UI ================= */
+document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("menuToggle");
   const menu = document.getElementById("navMenu");
 
-  toggle.addEventListener("click", () => {
-    menu.classList.toggle("active");
-  });
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+  }
+});
 
-
-
-
-
-
-
-
-  function sendInquiry(e) {
+/* ================= FORM SUBMITS (MAIL) ================= */
+function sendInquiry(e) {
   e.preventDefault();
 
   const name = document.getElementById("name").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const email = document.getElementById("email").value.trim();
   const budget = document.getElementById("budget").value.trim();
-  // const message = document.getElementById("message").value.trim();
 
   const subject = encodeURIComponent("Inquiry for Luxury Plots");
   const body = encodeURIComponent(
@@ -80,7 +78,6 @@ Name: ${name}
 Phone: ${phone}
 Email: ${email}
 Purpose: ${budget}
-
 `
   );
 
@@ -88,15 +85,12 @@ Purpose: ${budget}
     `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
 }
 
-
-
-  function sendInquiry1(e) {
+function sendInquiry1(e) {
   e.preventDefault();
 
   const name = document.getElementById("name1").value.trim();
   const phone = document.getElementById("phone1").value.trim();
   const email = document.getElementById("email1").value.trim();
-  // const budget = document.getElementById("budget").value.trim();
   const message = document.getElementById("message").value.trim();
 
   const subject = encodeURIComponent("Inquiry for Luxury Plots");
@@ -107,16 +101,14 @@ Name: ${name}
 Phone: ${phone}
 Email: ${email}
 Message: ${message}
-
 `
   );
 
   window.location.href =
     `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
 }
-
-
 </script>
+
 
 
 
@@ -1528,6 +1520,65 @@ if (track && cards.length && nextBtn && prevBtn) {
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("popup");
+  const closeBtn = document.getElementById("closeBtn");
+  const thankYouPopup = document.getElementById("thankYouPopup");
+  const thankYouClose = document.getElementById("thankYouClose");
+
+  // ✅ OPEN POPUP FROM ANY BUTTON
+  document.querySelectorAll(".open-popup").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      popup.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  // ❌ CLOSE POPUP
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+    document.body.style.overflow = "";
+  });
+
+  // ❌ CLOSE ON BACKDROP CLICK
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.style.display = "none";
+      document.body.style.overflow = "";
+    }
+  });
+
+  // 📩 POPUP FORM SUBMIT
+  document.getElementById("popupForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = pname.value.trim();
+    const email = pemail.value.trim();
+    const phone = pphone.value.trim();
+
+    if (!name || !email || !phone) return;
+
+    const subject = encodeURIComponent("New Inquiry - Luxury Plots");
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}`
+    );
+
+    window.location.href =
+      `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
+
+    popup.style.display = "none";
+    thankYouPopup.style.display = "flex";
+  });
+
+  // ❌ CLOSE THANK YOU
+  thankYouClose.addEventListener("click", () => {
+    thankYouPopup.style.display = "none";
+    document.body.style.overflow = "";
+  });
+});
+</script>
 
 
 
