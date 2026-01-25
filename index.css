@@ -946,9 +946,7 @@ width: 30%;
   margin-bottom: 70px;
 }
 
-/* ===============================
-   DESKTOP GRID
-================================ */
+/* ===== DESKTOP GRID ===== */
 .row {
   display: flex;
   gap: 32px;
@@ -961,7 +959,6 @@ width: 30%;
   border-radius: 22px;
   padding: 42px 20px;
   border: 1px solid #1f1f1f;
-  transition: 0.3s ease;
 }
 
 .amenity-card i {
@@ -979,30 +976,25 @@ width: 30%;
   font-weight: 600;
 }
 
-.amenity-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-}
-
 .clubhouse {
   flex: 2;
   border-color: rgba(245, 200, 66, 0.7);
 }
 
-/* SPACER — DESKTOP ONLY */
 .spacer {
   flex: 1;
 }
 
-/* SLIDER BUTTONS — HIDDEN BY DEFAULT */
 .slider-btn {
   display: none;
 }
 
-/* ===============================
-   MOBILE SLIDER
-================================ */
+/* ===== MOBILE SLIDER ===== */
 @media (max-width: 600px) {
+
+   .slider-track {
+    width: 100%;
+  }
 
   .amenities {
     padding: 70px 16px;
@@ -1040,10 +1032,8 @@ width: 30%;
 
   .clubhouse {
     flex: 0 0 100%;
-    transform: none;
   }
 
-  /* BUTTONS — MOBILE ONLY */
   .slider-btn {
     display: block;
     position: absolute;
@@ -1062,12 +1052,8 @@ width: 30%;
 
   .slider-btn.prev { left: 6px; }
   .slider-btn.next { right: 6px; }
-
-  .amenity-card:hover {
-    transform: none;
-    box-shadow: none;
-  }
 }
+
 
 
 
@@ -2806,3 +2792,91 @@ input{
   box-shadow: 0 6px 15px rgba(212, 175, 55, 0.45);
 }
 
+
+
+
+
+
+
+
+
+
+
+/* ================= AMENITIES MOBILE SLIDER ================= */
+@media (max-width: 600px) {
+
+  /* keep section spacing */
+  .amenities {
+    padding: 70px 16px;
+  }
+
+  /* rows must NOT break flex scroll */
+  .row {
+    display: flex;
+    gap: 16px;
+  }
+
+  /* remove spacers on mobile */
+  .spacer {
+    display: none;
+  }
+
+  /* slider wrapper */
+  .amenities-slider {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* THIS IS THE SCROLL CONTAINER */
+  .slider-track {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .slider-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* FORCE ONE CARD PER VIEW */
+  .amenity-card,
+  .clubhouse {
+    min-width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
+
+  /* disable desktop hover effects */
+  .amenity-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* slider buttons */
+  .slider-btn {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.7);
+    color: #f5c842;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .slider-btn.prev { left: 6px; }
+  .slider-btn.next { right: 6px; }
+}
+
+/* hide buttons on desktop */
+@media (min-width: 601px) {
+  .slider-btn {
+    display: none;
+  }
+}
