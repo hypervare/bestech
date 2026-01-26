@@ -2802,36 +2802,31 @@ input{
 
 
 
-/* ================= AMENITIES MOBILE SLIDER ================= */
 @media (max-width: 600px) {
 
-  /* keep section spacing */
   .amenities {
     padding: 70px 16px;
   }
 
-  /* rows must NOT break flex scroll */
+  /* flatten rows */
   .row {
-    display: flex;
-    gap: 16px;
+    display: contents;
   }
 
-  /* remove spacers on mobile */
   .spacer {
     display: none;
   }
 
-  /* slider wrapper */
   .amenities-slider {
     position: relative;
     overflow: hidden;
   }
 
-  /* THIS IS THE SCROLL CONTAINER */
   .slider-track {
     display: flex;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -2839,21 +2834,20 @@ input{
     display: none;
   }
 
-  /* FORCE ONE CARD PER VIEW */
-  .amenity-card,
-  .clubhouse {
-    min-width: 100%;
-    flex-shrink: 0;
+  /* 🔑 KEY FIX */
+  .amenity-card {
+    flex: 0 0 100%;
+    max-width: 100%;
     scroll-snap-align: center;
+    margin: 0 auto; /* CENTER */
   }
 
-  /* disable desktop hover effects */
-  .amenity-card:hover {
-    transform: none;
-    box-shadow: none;
+  .clubhouse {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 
-  /* slider buttons */
+  /* buttons */
   .slider-btn {
     display: block;
     position: absolute;
@@ -2863,7 +2857,7 @@ input{
     height: 42px;
     border-radius: 50%;
     border: none;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.65);
     color: #f5c842;
     font-size: 26px;
     cursor: pointer;
@@ -2874,9 +2868,11 @@ input{
   .slider-btn.next { right: 6px; }
 }
 
+
 /* hide buttons on desktop */
 @media (min-width: 601px) {
   .slider-btn {
     display: none;
   }
 }
+
