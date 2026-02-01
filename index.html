@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luxury Plots</title>
+  <title>Luxury Plot</title>
   <link rel="stylesheet" href="index.css"/>
   <!-- Bootstrap -->
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -23,7 +23,7 @@
         <i class="bi bi-person-bounding-box"></i>
       </div>
       <div>
-        <strong>Luxury Plots</strong>
+        <strong>Luxury Plot</strong>
         <small>Sector 89A</small>
       </div>
     </div>
@@ -61,6 +61,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Phone number checker:
+function validatePhone(phone) {
+  const numberSplits = phone.split(" ");
+  if(numberSplits.length === 2){
+    const withPlus = numberSplits[0];
+    const contactNumber = numberSplits[1];
+    if(withPlus.match(/^\+[1-9][0-9]{0,2}$/)){
+      if(contactNumber.length === 10 && contactNumber.match(/[6-9][0-9]{9}$/)){
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }
+  }else if(numberSplits.length === 1){
+    if(numberSplits[0].length === 10 && numberSplits[0].match(/[6-9][0-9]{9}$/)){
+      return true;
+    }else{
+      return false;
+    }
+  }else{
+    return false;
+  }
+}
+
 /* ================= FORM SUBMITS (MAIL) ================= */
 function sendInquiry(e) {
   e.preventDefault();
@@ -70,19 +96,35 @@ function sendInquiry(e) {
   const email = document.getElementById("email").value.trim();
   const budget = document.getElementById("budget").value.trim();
 
-  const subject = encodeURIComponent("Inquiry for Luxury Plots");
-  const body = encodeURIComponent(
-`New Inquiry Details:
-
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Purpose: ${budget}
-`
-  );
-
-  window.location.href =
-    `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
+    if(validatePhone(phone) === true){
+      const subject = encodeURIComponent("Inquiry for Luxury Plot");
+        const body = encodeURIComponent(
+            `New Inquiry Details:
+            
+            Name: ${name}
+            Phone: ${phone}
+            Email: ${email}
+            Purpose: ${budget}
+            `
+        );
+      
+      const thankYouPopup = document.getElementById("thankYouPopup");
+      const thankYouClose = document.getElementById("thankYouClose");
+    
+      window.location.href =
+        `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
+        
+        setTimeout(() => {
+        thankYouPopup.style.display = "flex";
+      }, 600);
+    
+      thankYouClose.addEventListener("click", () => {
+        thankYouPopup.style.display = "none";
+      });
+      
+    }else{
+      alert("Please enter a valid phone number.");
+    }
 }
 
 function sendInquiry1(e) {
@@ -92,20 +134,34 @@ function sendInquiry1(e) {
   const phone = document.getElementById("phone1").value.trim();
   const email = document.getElementById("email1").value.trim();
   const message = document.getElementById("message").value.trim();
-
-  const subject = encodeURIComponent("Inquiry for Luxury Plots");
-  const body = encodeURIComponent(
-`New Inquiry Details:
-
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Message: ${message}
-`
-  );
-
-  window.location.href =
-    `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
+    if(validatePhone(phone) === true){
+      const subject = encodeURIComponent("Inquiry for Luxury Plot");
+      const body = encodeURIComponent(
+        `New Inquiry Details:
+        
+        Name: ${name}
+        Phone: ${phone}
+        Email: ${email}
+        Message: ${message}
+        `
+      );
+      
+      const thankYouPopup = document.getElementById("thankYouPopup");
+      const thankYouClose = document.getElementById("thankYouClose");
+    
+      window.location.href =
+        `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
+        
+        setTimeout(() => {
+        thankYouPopup.style.display = "flex";
+      }, 600);
+    
+      thankYouClose.addEventListener("click", () => {
+        thankYouPopup.style.display = "none";
+      });
+    }else{
+      alert("Please enter a valid phone number.");
+    }
 }
 </script>
 
@@ -165,7 +221,7 @@ Message: ${message}
         </div>
 
         <div class="cta">
-          <a href="https://api.whatsapp.com/send/?phone=918755334299&text=Hi%2C%20I%E2%80%99m%20interested%20in%20luxury%20plots%20in%20Gurgaon.%20Please%20share%20details.%20Thanks&type=phone_number&app_absent=0"><button class="btn-primary">Connect on WhatsApp</button></a>
+          <a href="https://api.whatsapp.com/send/?phone=918755334299&text=Hi%2C%20I%E2%80%99m%20interested%20in%20luxury%20plot%20in%20Gurgaon.%20Please%20share%20details.%20Thanks&type=phone_number&app_absent=0"><button class="btn-primary">Connect on WhatsApp</button></a>
           <a href="#enquiryForm"><button class="btn-outline open-popup">Download Brochure</button></a>
         </div>
       </div>
@@ -173,11 +229,11 @@ Message: ${message}
       <!-- RIGHT FORM -->
     <div class="hero-form">
   <h3>Get Exclusive Details</h3>
-  <p>Fill the form and our team will contact you</p>
+  <p>Fill the form and our team will contact you.</p>
 
   <form onsubmit="sendInquiry(event)">
     <input id="name" type="text" placeholder="Your Name" required />
-    <input id="phone" type="tel" placeholder="Phone Number" required />
+    <input id="phone" type="tel" placeholder="Phone Number (e.g. +91 9876543210)" required />
     <input id="email" type="email" placeholder="Email Address" required />
     <input id="budget" type="text" placeholder="What's your budget..." />
 
@@ -201,7 +257,7 @@ Message: ${message}
   <div class="features-header">
     <span class="pill" style="border: none;">WHY CHOOSE US</span>
     <h2>Exceptional Features</h2>
-    <p>Discover what makes Luxury Plots the perfect choice for your dream home</p>
+    <p>Discover what makes Luxury Plot the perfect choice for your dream home</p>
   </div>
 
   <div class="features-grid">
@@ -792,7 +848,7 @@ Message: ${message}
       <div class="address-card">
         <h4>Address</h4>
         <p>
-          Luxury Plots, Sector 89A, Dwarka Expressway,<br>
+          Luxury Plot, Sector 89A, Dwarka Expressway,<br>
           Gurgaon, Haryana
         </p>
         <a href="https://api.whatsapp.com/send/?phone=918755334299&text=Hey,%0aI%20want%20to%20know%20direction%20to%20Bestech.&type=phone_number&app_absent=0"></a><button class="direction-btn open-popup">Get Directions</button>
@@ -1059,7 +1115,7 @@ Message: ${message}
 
       <div class="form-group">
         <label>Phone Number</label>
-        <input id="phone1" type="tel" placeholder="Phone Number" required />
+        <input id="phone1" type="tel" placeholder="Phone Number (e.g. +91 9876543210)" required />
       </div>
 
       <div class="form-group">
@@ -1125,7 +1181,7 @@ Message: ${message}
       <div class="footer-logo">
         <div class="footer-logo-icon"><i class="bi bi-building"></i></div>
         <div>
-          <h3>Luxury Plots</h3>
+          <h3>Luxury Plot</h3>
           <span>Sector 89A</span>
         </div>
       </div>
@@ -1177,14 +1233,14 @@ Message: ${message}
     <div class="newsletter">
       <h4>WhatsApp</h4>
       <p>Subscribe to get latest updates and offers.</p>
-      <a href="https://api.whatsapp.com/send/?phone=918755334299&text=Hi%2C%20I%E2%80%99m%20interested%20in%20luxury%20plots%20in%20Gurgaon.%20Please%20share%20details.%20Thanks&type=phone_number&app_absent=0"><button>Connect on WhatsApp</button></a>
+      <a href="https://api.whatsapp.com/send/?phone=918755334299&text=Hi%2C%20I%E2%80%99m%20interested%20in%20luxury%20plot%20in%20Gurgaon.%20Please%20share%20details.%20Thanks&type=phone_number&app_absent=0"><button>Connect on WhatsApp</button></a>
     </div>
 
   </div>
 
   <!-- BOTTOM -->
   <div class="footer-bottom">
-    <div><p>© 2024 Luxury Plots | Designed by <a href="https://hypervare.com" style="color: white; text-decoration: none; margin: 0; padding: 0;">Hyper Vare</a>.</p></div>
+    <div><p>© 2024 Luxury Plot | Designed by <a href="https://hypervare.com" style="color: white; text-decoration: none; margin: 0; padding: 0;">Hyper Vare</a>.</p></div>
     <div>
       <a href="#">Privacy Policy</a>
       <a href="#">Terms & Conditions</a>
@@ -1211,13 +1267,13 @@ Message: ${message}
     <button class="close-btn" id="closeBtn">&times;</button>
 
     <h2>Get Exclusive Details</h2>
-    <p>Fill the form and our team will contact you</p>
+    <p>Fill the form and our team will contact you.</p>
 
     
       <form id="popupForm">
   <input id="pname" type="text" placeholder="Your Name" required>
   <input id="pemail" type="email" placeholder="Email Address" required>
-  <input id="pphone" type="tel" placeholder="Phone Number" required>
+  <input id="pphone" type="tel" placeholder="Phone Number (e.g. +91 9876543210)" required>
   <button type="submit" class="submit-btn">Submit</button>
 </form>
     
@@ -1243,176 +1299,35 @@ Message: ${message}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <script>
-console.log("✅ JS file loaded");
-
-window.addEventListener("load", () => {
-  console.log("✅ Window loaded");
-
-  const popup = document.getElementById("popup");
-  const form = document.getElementById("popupForm");
-
-  console.log("Popup element:", popup);
-  console.log("Form element:", form);
-
-  
-  setTimeout(() => {
-    if (popup) {
-      popup.style.display = "flex";
-      console.log("✅ Popup forced open");
-    } else {
-      console.error("❌ Popup NOT found");
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // Phone number checker:
+    function validatePhone(phone) {
+      const numberSplits = phone.split(" ");
+      if(numberSplits.length === 2){
+        const withPlus = numberSplits[0];
+        const contactNumber = numberSplits[1];
+        if(withPlus.match(/^\+[1-9][0-9]{0,2}$/)){
+          if(contactNumber.length === 10 && contactNumber.match(/[6-9][0-9]{9}$/)){
+            return true;
+          }else{
+            return false;
+          }
+        }else{
+          return false;
+        }
+      }else if(numberSplits.length === 1){
+        if(numberSplits[0].length === 10 && numberSplits[0].match(/[6-9][0-9]{9}$/)){
+          return true;
+        }else{
+          return false;
+        }
+      }else{
+        return false;
+      }
     }
-  }, 2000);
-
-  
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      console.log("✅ FORM SUBMITTED");
-
-    //   alert("FORM SUBMIT EVENT WORKING");
-    });
-  } else {
-    console.error("❌ popupForm NOT found");
-  }
-});
-</script>
-
-
-<script>
-document.getElementById("popupForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const name = document.getElementById("pname").value.trim();
-  const email = document.getElementById("pemail").value.trim();
-  const phone = document.getElementById("pphone").value.trim();
-
-  const subject = encodeURIComponent("New Inquiry - Luxury Plots");
-  const body = encodeURIComponent(
-    `New Inquiry Received:\n\n` +
-    `Name: ${name}\n` +
-    `Email: ${email}\n` +
-    `Phone: ${phone}\n`
-  );
-
-  window.location.href =
-    `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
-});
-</script>
-
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const popup = document.getElementById("popup");
-  const closeBtn = document.getElementById("closeBtn");
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
-      popup.style.display = "none";
-    });
-  }
-});
-</script> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const popup = document.getElementById("popup");
-  const popupForm = document.getElementById("popupForm");
-  const popupClose = document.getElementById("closeBtn");
-
-  const thankYouPopup = document.getElementById("thankYouPopup");
-  const thankYouClose = document.getElementById("thankYouClose");
-
-  // 🔔 Show popup after 2 seconds
-  setTimeout(() => {
-    popup.style.display = "flex";
-  }, 2000);
-
-  // ❌ Close main popup
-  popupClose.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
-
-  // 📩 Form submit
-  popupForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("pname").value.trim();
-    const email = document.getElementById("pemail").value.trim();
-    const phone = document.getElementById("pphone").value.trim();
-
-    const subject = encodeURIComponent("New Inquiry - Luxury Plots");
-    const body = encodeURIComponent(
-      `New Inquiry Received:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`
-    );
-
-    // ✅ Close main popup
-    popup.style.display = "none";
-
-    // ✅ Show thank you popup
-    thankYouPopup.style.display = "flex";
-
-    // 📧 Trigger email
-    window.location.href =
-      `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
-  });
-
-  // ❌ Close thank you popup
-  thankYouClose.addEventListener("click", () => {
-    thankYouPopup.style.display = "none";
-  });
-});
-</script> -->
-
-
-
-
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+    
   const popup = document.getElementById("popup");
   const popupForm = document.getElementById("popupForm");
   const popupClose = document.getElementById("closeBtn");
@@ -1438,25 +1353,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("pemail").value.trim();
     const phone = document.getElementById("pphone").value.trim();
 
-    // ✅ basic validation = successful submission
-    if (!name || !email || !phone) return;
+    if(validatePhone(phone) === true){
 
-    const subject = encodeURIComponent("New Inquiry - Luxury Plots");
-    const body = encodeURIComponent(
-      `New Inquiry Received:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`
-    );
-
-    // 📧 Trigger email
-    window.location.href =
-      `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
-
-    // ✅ Close main popup
-    popup.style.display = "none";
-
-    // ✅ Show thank you popup AFTER submission
-    setTimeout(() => {
-      thankYouPopup.style.display = "flex";
-    }, 600);
+        // ✅ basic validation = successful submission
+        if (!name || !email || !phone) return;
+    
+        const subject = encodeURIComponent("New Inquiry - Luxury Plot");
+        const body = encodeURIComponent(
+          `New Inquiry Received:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`
+        );
+    
+        // 📧 Trigger email
+        window.location.href =
+          `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
+    
+        // ✅ Close main popup
+        popup.style.display = "none";
+    
+        // ✅ Show thank you popup AFTER submission
+        setTimeout(() => {
+          thankYouPopup.style.display = "flex";
+        }, 600);
+    
+    }else{
+      alert("Please enter a valid phone number.");
+    }
+    
   });
 
   // ❌ Close thank you popup
@@ -1514,95 +1436,5 @@ if (track && cards.length && nextBtn && prevBtn) {
 </script>
 
 
-
-
-
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const popup = document.getElementById("popup");
-  const closeBtn = document.getElementById("closeBtn");
-  const thankYouPopup = document.getElementById("thankYouPopup");
-  const thankYouClose = document.getElementById("thankYouClose");
-
-  // ✅ OPEN POPUP FROM ANY BUTTON
-  document.querySelectorAll(".open-popup").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      popup.style.display = "flex";
-      document.body.style.overflow = "hidden";
-    });
-  });
-
-  // ❌ CLOSE POPUP
-  closeBtn.addEventListener("click", () => {
-    popup.style.display = "none";
-    document.body.style.overflow = "";
-  });
-
-  // ❌ CLOSE ON BACKDROP CLICK
-  popup.addEventListener("click", (e) => {
-    if (e.target === popup) {
-      popup.style.display = "none";
-      document.body.style.overflow = "";
-    }
-  });
-
-  // 📩 POPUP FORM SUBMIT
-  document.getElementById("popupForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const name = pname.value.trim();
-    const email = pemail.value.trim();
-    const phone = pphone.value.trim();
-
-    if (!name || !email || !phone) return;
-
-    const subject = encodeURIComponent("New Inquiry - Luxury Plots");
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}`
-    );
-
-    window.location.href =
-      `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
-
-    popup.style.display = "none";
-    thankYouPopup.style.display = "flex";
-  });
-
-  // ❌ CLOSE THANK YOU
-  thankYouClose.addEventListener("click", () => {
-    thankYouPopup.style.display = "none";
-    document.body.style.overflow = "";
-  });
-});
-</script>
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
