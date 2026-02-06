@@ -12,6 +12,7 @@
 
   <!-- <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">  -->
+  <link rel="stylesheet" href="test.css">
 </head>
 <body>
 
@@ -1299,35 +1300,26 @@ function sendInquiry1(e) {
 
 
 
+
+
+
+
+
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // Phone number checker:
-    function validatePhone(phone) {
-      const numberSplits = phone.split(" ");
-      if(numberSplits.length === 2){
-        const withPlus = numberSplits[0];
-        const contactNumber = numberSplits[1];
-        if(withPlus.match(/^\+[1-9][0-9]{0,2}$/)){
-          if(contactNumber.length === 10 && contactNumber.match(/[6-9][0-9]{9}$/)){
-            return true;
-          }else{
-            return false;
-          }
-        }else{
-          return false;
-        }
-      }else if(numberSplits.length === 1){
-        if(numberSplits[0].length === 10 && numberSplits[0].match(/[6-9][0-9]{9}$/)){
-          return true;
-        }else{
-          return false;
-        }
-      }else{
-        return false;
-      }
+
+  function validatePhone(phone) {
+    const parts = phone.trim().split(" ");
+    if (parts.length === 2) {
+      return /^\+[1-9][0-9]{0,2}$/.test(parts[0]) &&
+             /^[6-9][0-9]{9}$/.test(parts[1]);
     }
-    
+    return /^[6-9][0-9]{9}$/.test(phone);
+  }
+
   const popup = document.getElementById("popup");
   const popupForm = document.getElementById("popupForm");
   const popupClose = document.getElementById("closeBtn");
@@ -1335,60 +1327,58 @@ document.addEventListener("DOMContentLoaded", () => {
   const thankYouPopup = document.getElementById("thankYouPopup");
   const thankYouClose = document.getElementById("thankYouClose");
 
-  // 🔔 Show main popup after 2 sec
+  // ⏱ AUTO OPEN POPUP AFTER 2 SECONDS
   setTimeout(() => {
     popup.style.display = "flex";
   }, 2000);
 
-  // ❌ Close main popup manually
+  // 🔘 OPEN POPUP ON BUTTON CLICK
+  document.querySelectorAll(".open-popup").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      popup.style.display = "flex";
+    });
+  });
+
+  // ❌ CLOSE POPUP
   popupClose.addEventListener("click", () => {
     popup.style.display = "none";
   });
 
-  // 📩 FORM SUBMIT (SUCCESS FLOW)
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) popup.style.display = "none";
+  });
+
+  // 📩 FORM SUBMIT
   popupForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const name = document.getElementById("pname").value.trim();
-    const email = document.getElementById("pemail").value.trim();
-    const phone = document.getElementById("pphone").value.trim();
+    const name = pname.value.trim();
+    const email = pemail.value.trim();
+    const phone = pphone.value.trim();
 
-    if(validatePhone(phone) === true){
-
-        // ✅ basic validation = successful submission
-        if (!name || !email || !phone) return;
-    
-        const subject = encodeURIComponent("New Inquiry - Luxury Plot");
-        const body = encodeURIComponent(
-          `New Inquiry Received:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`
-        );
-    
-        // 📧 Trigger email
-        window.location.href =
-          `mailto:Atavantika18@gmail.com?subject=${subject}&body=${body}`;
-    
-        // ✅ Close main popup
-        popup.style.display = "none";
-    
-        // ✅ Show thank you popup AFTER submission
-        setTimeout(() => {
-          thankYouPopup.style.display = "flex";
-        }, 600);
-    
-    }else{
+    if (!validatePhone(phone)) {
       alert("Please enter a valid phone number.");
+      return;
     }
-    
+
+    window.location.href =
+      `mailto:Atavantika18@gmail.com?subject=New Inquiry&body=Name:${name}%0APhone:${phone}`;
+
+    popup.style.display = "none";
+
+    setTimeout(() => {
+      thankYouPopup.style.display = "flex";
+    }, 600);
   });
 
-  // ❌ Close thank you popup
+  // ❌ CLOSE THANK YOU POPUP
   thankYouClose.addEventListener("click", () => {
     thankYouPopup.style.display = "none";
   });
+
 });
 </script>
-
-
 
 
 
@@ -1438,4 +1428,3 @@ if (track && cards.length && nextBtn && prevBtn) {
 
 </body>
 </html>
-
